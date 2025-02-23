@@ -1,0 +1,9 @@
+goto() {
+    if [ -z "$1" ]; then
+        echo "Please provide a drive letter (e.g., goto d, goto c)."
+        return 1
+    fi
+    drive_letter=$(echo $1 | tr '[:upper:]' '[:lower:]')  # Convert to lowercase
+    cd /mnt/$drive_letter || { echo "Drive $drive_letter not found."; return 1; }
+}
+
